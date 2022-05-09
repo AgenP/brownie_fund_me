@@ -1,0 +1,26 @@
+# Allowing brownie to download the interfaces required
+dependencies:
+  # - <organization/repository>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
+
+dotenv: .env
+networks:
+  default: development
+  rinkeby:
+    eth_usd_price_feed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e"
+    # For etherscan
+    verify: True
+  mainnet-fork:
+    eth_usd_price_feed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+    verify: False #forks should not be verified since there is no forked etherscan
+  development:
+    verify: False
+  ganache-local:
+    verify: False
+wallets:
+  from_key: ${PK}
+
